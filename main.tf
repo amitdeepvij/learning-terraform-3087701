@@ -1,4 +1,4 @@
-data "aws_ami" "app_ami" {
+data "gcp_ami" "app_ami" {
   most_recent = true
 
   filter {
@@ -14,8 +14,8 @@ data "aws_ami" "app_ami" {
   owners = ["979382823631"] # Bitnami
 }
 
-resource "aws_instance" "web" {
-  ami           = data.aws_ami.app_ami.id
+resource "gcp_instance" "web" {
+  ami           = data.gcp_ami.app_ami.id
   instance_type = "t3.nano"
 
   tags = {
